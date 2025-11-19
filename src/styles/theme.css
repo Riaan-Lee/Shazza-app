@@ -1,0 +1,46 @@
+:root {
+  /* Primary Brand Colors */
+  --purple: #a020f0;
+  --purple-light: rgba(160, 32, 240, 0.25);
+  --purple-glass: rgba(160, 32, 240, 0.12);
+
+  /* Neutrals */
+  --white: #ffffff;
+  --black: #000000;
+
+  /* Shadows */
+  --shadow-1: rgba(0, 0, 0, 0.15);
+  --shadow-2: rgba(0, 0, 0, 0.28);
+
+  /* Radius */
+  --radius-large: 22px;
+  --radius-medium: 16px;
+  --radius-small: 10px;
+
+  /* Blur */
+  --blur-glass: 18px;
+
+  /* Typography */
+  --font-main: 'Inter', 'SF Pro Display', 'Poppins', sans-serif;
+}
+
+/* Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-main);
+  background: #000000;
+  color: var(--white);
+  padding-top: 100px; /* space for floating navbar */
+}
+
+/* Smooth transitions for everything */
+*,
+*::before,
+*::after {
+  transition: 0.25s ease;
+}

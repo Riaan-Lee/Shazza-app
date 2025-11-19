@@ -25,7 +25,7 @@
 
 // export default Navbar;
 import { Link } from 'react-router-dom'
-import './navbar.css'
+import '/Users/riaanlee/Shazza-app/src/styles/navbar.css'
 
 export default function Navbar() {
   return (

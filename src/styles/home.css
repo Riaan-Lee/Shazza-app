@@ -1,0 +1,43 @@
+.home-container {
+  width: 92%;
+  margin: auto;
+  padding-bottom: 3rem;
+}
+
+/* HERO */
+.hero {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+.hero h1 {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.hero p {
+  margin-top: 0.5rem;
+  opacity: 0.9;
+}
+
+.hero-tags {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.hero-tags span {
+  background: var(--purple-light);
+  padding: 6px 12px;
+  border-radius: var(--radius-medium);
+  backdrop-filter: blur(10px);
+  font-size: 0.85rem;
+}
+
+/* FEED */
+.event-feed h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
