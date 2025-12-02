@@ -16,22 +16,148 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Shazza — Demo Preview</title>
+    <title>Shazza — Demo Preview (Home)</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
     <link rel="stylesheet" href="demo.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <div class="container">
-      <h1>Shazza App (Demo)</h1>
-      <p>
-        This is a static preview for GitHub Pages — no backend connection
-        required.
-      </p>
+    <!-- TOP NAVBAR (replicated from Navbar.jsx) -->
+    <nav class="top-nav-glass">
+      <div class="top-nav-container">
+        <div class="nav-logo">Shazza</div>
+        <ul class="top-nav-links">
+          <li>
+            <a class="top-nav-button top-nav-active" href="index.html">
+              <span class="material-symbols-outlined">home</span>
+              Home
+            </a>
+          </li>
+          <li>
+            <a class="top-nav-button" href="events.html">
+              <span class="material-symbols-outlined">event</span>
+              Events
+            </a>
+          </li>
+          <li>
+            <a class="top-nav-button" href="events.html">
+              <span class="material-symbols-outlined">explore</span>
+              Discover
+            </a>
+          </li>
+          <li>
+            <a class="top-nav-button" href="event-details.html">
+              <span class="material-symbols-outlined">add_box</span>
+              Create
+            </a>
+          </li>
+          <li>
+            <a class="top-nav-button" href="dashboard.html">
+              <span class="material-symbols-outlined">person</span>
+              Profile
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
 
-      <a class="btn" href="login.html">Login Page</a>
-      <a class="btn" href="events.html">Events Listing</a>
-      <a class="btn" href="event-details.html">Event Details</a>
-      <a class="btn" href="tickets.html">Ticket Purchase</a>
-      <a class="btn" href="dashboard.html">User Dashboard</a>
-    </div>
+    <main class="container">
+      <section class="hero">
+        <h1>Find Your Next Event</h1>
+        <p>
+          Discover concerts, parties, meetups, sports, and everything happening
+          around you.
+        </p>
+
+        <div class="hero-tags">
+          <a class="tag" href="events.html">🔥 Trending</a>
+          <a class="tag" href="events.html">🎵 Concerts</a>
+          <a class="tag" href="events.html">⚽ Sports</a>
+          <a class="tag" href="events.html">🎉 Parties</a>
+        </div>
+      </section>
+
+      <section class="event-feed">
+        <h2>Upcoming Events</h2>
+
+        <div class="grid-events">
+          <a class="event-card" href="event-details.html">
+            <div class="event-img">
+              <img
+                src="https://images.unsplash.com/photo-1508672019048-805c876b67e2"
+                alt="event"
+              />
+            </div>
+            <div class="event-content">
+              <h3>Midnight Purple Party</h3>
+              <p class="muted">Fri • 11:00 PM — Westlands, Nairobi</p>
+              <p class="price">Free</p>
+            </div>
+          </a>
+
+          <a class="event-card" href="event-details.html">
+            <div class="event-img">
+              <img
+                src="https://images.unsplash.com/photo-1504805572947-34fad45aed93"
+                alt="event"
+              />
+            </div>
+            <div class="event-content">
+              <h3>Live Concert: Magenta Nights</h3>
+              <p class="muted">Sat • 7:00 PM — Kilimani, Nairobi</p>
+              <p class="price">KES 1,500</p>
+            </div>
+          </a>
+
+          <a class="event-card" href="event-details.html">
+            <div class="event-img">
+              <img
+                src="https://images.unsplash.com/photo-1498050108023-c5249f4df085"
+                alt="event"
+              />
+            </div>
+            <div class="event-content">
+              <h3>Tech & Innovation Meetup</h3>
+              <p class="muted">Sun • 2:00 PM — Upper Hill</p>
+              <p class="price">Free</p>
+            </div>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <p>© 2025 Shazza</p>
+    </footer>
+
+    <!-- BOTTOM NAV (replicated from BottomNav.jsx) -->
+    <nav class="bottom-nav" role="navigation" aria-label="Bottom Navigation">
+      <ul>
+        <li>
+          <a href="index.html"
+            ><span class="material-symbols-outlined">home</span>Home</a
+          >
+        </li>
+        <li>
+          <a href="events.html"
+            ><span class="material-symbols-outlined">event</span>Events</a
+          >
+        </li>
+        <li>
+          <a href="event-details.html"
+            ><span class="material-symbols-outlined">add_box</span>Create</a
+          >
+        </li>
+        <li>
+          <a href="dashboard.html"
+            ><span class="material-symbols-outlined">person</span>Profile</a
+          >
+        </li>
+      </ul>
+    </nav>
   </body>
 </html>
