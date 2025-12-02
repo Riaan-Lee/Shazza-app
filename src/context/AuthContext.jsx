@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useEffect } from 'react'
-import { getCurrentUser, loginUser, logoutUser } from '../api/auth'
+import axiosClient from '../services/axiosClient'
 
 const AuthContext = createContext()
 
@@ -16,28 +16,32 @@ export const AuthProvider = ({ children }) => {
       return
     }
 
-    getCurrentUser()
-      .then((res) => setUser(res.data))
+    axiosClient
+      .get('/auth/me')
+      .then((res) => setUser(res.data.user))
       .catch(() => localStorage.removeItem('shazza_token'))
       .finally(() => setLoading(false))
   }, [])
 
   const login = async (credentials) => {
-    const res = await loginUser(credentials)
+    const res = await axiosClient.post('/auth/login', credentials)
     localStorage.setItem('shazza_token', res.data.token)
     setUser(res.data.user)
   }
 
-  const logout = async () => {
-    try {
-      await logoutUser()
-    } catch {}
+  const register = async (credentials) => {
+    const res = await axiosClient.post('/auth/register', credentials)
+    localStorage.setItem('shazza_token', res.data.token)
+    setUser(res.data.user)
+  }
+
+  const logout = () => {
     localStorage.removeItem('shazza_token')
     setUser(null)
   }
 
   return (
-    <AuthContext.Provider value={{ user, loading, login, logout }}>
+    <AuthContext.Provider value={{ user, loading, login, register, logout }}>
       {children}
     </AuthContext.Provider>
   )

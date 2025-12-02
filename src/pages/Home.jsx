@@ -24,26 +24,36 @@ export default function Home() {
       <section className="event-feed">
         <h2>Upcoming Events</h2>
 
-        <EventCard
-          title="Midnight Purple Party"
-          date="Fri • 11:00 PM"
-          location="Westlands, Nairobi"
-          image="https://images.unsplash.com/photo-1508672019048-805c876b67e2"
-        />
-
-        <EventCard
-          title="Live Concert: Magenta Nights"
-          date="Sat • 7:00 PM"
-          location="Kilimani, Nairobi"
-          image="https://images.unsplash.com/photo-1504805572947-34fad45aed93"
-        />
-
-        <EventCard
-          title="Tech & Innovation Meetup"
-          date="Sun • 2:00 PM"
-          location="Upper Hill"
-          image="https://images.unsplash.com/photo-1498050108023-c5249f4df085"
-        />
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {[
+            {
+              id: 1,
+              title: 'Midnight Purple Party',
+              date: 'Fri • 11:00 PM',
+              location: 'Westlands, Nairobi',
+              image:
+                'https://images.unsplash.com/photo-1508672019048-805c876b67e2',
+            },
+            {
+              id: 2,
+              title: 'Live Concert: Magenta Nights',
+              date: 'Sat • 7:00 PM',
+              location: 'Kilimani, Nairobi',
+              image:
+                'https://images.unsplash.com/photo-1504805572947-34fad45aed93',
+            },
+            {
+              id: 3,
+              title: 'Tech & Innovation Meetup',
+              date: 'Sun • 2:00 PM',
+              location: 'Upper Hill',
+              image:
+                'https://images.unsplash.com/photo-1498050108023-c5249f4df085',
+            },
+          ].map((ev) => (
+            <EventCard key={ev.id} event={ev} />
+          ))}
+        </div>
       </section>
     </div>
   )

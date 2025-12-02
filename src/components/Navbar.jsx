@@ -1,51 +1,66 @@
-// import { Link } from "react-router-dom";
-// import { useAuth } from "../context/AuthContext";
-
-// function Navbar() {
-//   const { user, logout } = useAuth();
-
-//   return (
-//     <nav style={{ padding: "10px", borderBottom: "1px solid #ccc" }}>
-//       <Link to="/">Home</Link> |<Link to="/events">Events</Link> |
-//       {user ? (
-//         <>
-//           <Link to="/profile">Profile</Link> |
-//           <button onClick={logout} style={{ background: "none" }}>
-//             Logout
-//           </button>
-//         </>
-//       ) : (
-//         <>
-//           <Link to="/login">Login</Link> |<Link to="/register">Register</Link>
-//         </>
-//       )}
-//     </nav>
-//   );
-// }
-
-// export default Navbar;
-import { Link } from 'react-router-dom'
+// src/components/Navbar.jsx
+import { NavLink, useNavigate } from 'react-router-dom'
+import {
+  MdHome,
+  MdEvent,
+  MdTravelExplore,
+  MdPerson,
+  MdAddBox,
+} from 'react-icons/md'
+import { useAuth } from '../context/AuthContext'
 import '/Users/riaanlee/Shazza-app/src/styles/navbar.css'
 
 export default function Navbar() {
-  return (
-    <nav className="glass-nav">
-      <div className="nav-logo">Shazza</div>
+  const { user } = useAuth()
+  const navigate = useNavigate()
 
-      <ul className="nav-links">
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/events">Events</Link>
-        </li>
-        <li>
-          <Link to="/discover">Discover</Link>
-        </li>
-        <li>
-          <Link to="/profile">Profile</Link>
-        </li>
-      </ul>
+  const items = [
+    { to: '/', label: 'Home', Icon: MdHome, protect: false },
+    {
+      to: '/Events',
+      label: 'Events',
+      Icon: MdEvent,
+      protect: false,
+    },
+    {
+      to: '/discover',
+      label: 'Discover',
+      Icon: MdTravelExplore,
+      protect: false,
+    },
+    { to: '/create-event', label: 'Create', Icon: MdAddBox, protect: true },
+    { to: '/profile', label: 'Profile', Icon: MdPerson, protect: true },
+  ]
+
+  const onClickItem = (e, item) => {
+    if (item.protect && !user) {
+      e.preventDefault()
+      navigate('/login')
+    }
+  }
+
+  return (
+    <nav className="top-nav-glass">
+      <div className="top-nav-container">
+        <div className="nav-logo">Shazza</div>
+
+        <ul className="top-nav-links">
+          {items.map(({ to, label, Icon, protect }) => (
+            <li key={to}>
+              <NavLink
+                to={to}
+                className={({ isActive }) =>
+                  `top-nav-button ${isActive ? 'top-nav-active' : ''}`
+                }
+                onClick={(e) => onClickItem(e, { to, protect })}
+              >
+                <Icon className="top-nav-icon" />
+                <span className="top-nav-text">{label}</span>
+              </NavLink>
+            </li>
+          ))}
+        </ul>
+      </div>
     </nav>
   )
 }

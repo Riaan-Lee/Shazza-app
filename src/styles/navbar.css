@@ -50,3 +50,90 @@
   color: #a020f0;
   backdrop-filter: blur(10px);
 }
+/* ====== TOP NAVBAR (Matches BottomNav Visual Style) ====== */
+
+.top-nav-glass {
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 92%;
+  padding: 0.6rem 1rem;
+  z-index: 1000;
+
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(160, 32, 240, 0.14);
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  border-radius: 22px;
+
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+}
+
+.top-nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.top-nav-links {
+  display: flex;
+  list-style: none;
+  gap: 1.2rem;
+  margin: 0;
+}
+
+.top-nav-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 14px;
+
+  text-decoration: none;
+  color: white; /* Keep text white */
+  transition:
+    background 0.22s ease,
+    box-shadow 0.22s ease,
+    transform 0.12s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.top-nav-button:hover {
+  background: rgba(160, 32, 240, 0.08);
+  transform: translateY(-1px);
+}
+
+.top-nav-active {
+  background: rgba(120, 16, 200, 0.22); /* slightly darker purple glow */
+  box-shadow: 0 6px 18px rgba(120, 16, 200, 0.18);
+}
+
+.top-nav-icon {
+  width: 20px;
+  height: 20px;
+  color: white; /* Keep icon white like bottom nav */
+}
+
+.top-nav-text {
+  font-size: 14px;
+  color: white; /* Keep text white */
+  white-space: nowrap;
+}
+
+/* Make Home and Profile icons slightly bolder visually */
+.top-nav-links li:first-child .top-nav-icon,
+.top-nav-links li:last-child .top-nav-icon {
+  filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.4));
+}
+
+/* Responsive: collapse text on very small screens */
+@media (max-width: 480px) {
+  .top-nav-text {
+    display: none;
+  }
+  .top-nav-button {
+    padding: 8px;
+    border-radius: 12px;
+  }
+}

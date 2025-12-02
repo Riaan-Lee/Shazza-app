@@ -11,11 +11,15 @@ export const createEvent = async ({
   capacity,
   price,
   is_paid,
+  mpesa_type,
+  mpesa_number,
+  mpesa_account,
+  payment_instructions,
 }) => {
   const [result] = await db.query(
     `INSERT INTO events 
-    (user_id, title, description, date, time, location, capacity, price, is_paid)
-     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+    (user_id, title, description, date, time, location, capacity, price, is_paid, mpesa_type, mpesa_number, mpesa_account, payment_instructions)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
     [
       user_id,
       title,
@@ -26,6 +30,10 @@ export const createEvent = async ({
       capacity,
       price,
       is_paid,
+      mpesa_type || null,
+      mpesa_number || null,
+      mpesa_account || null,
+      payment_instructions || null,
     ],
   )
 

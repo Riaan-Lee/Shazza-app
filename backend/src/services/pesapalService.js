@@ -5,39 +5,56 @@ dotenv.config()
 const { PESAPAL_CONSUMER_KEY, PESAPAL_CONSUMER_SECRET, PESAPAL_ENV } =
   process.env
 
-// Pesapal hosts
+// Correct v3 base URLs
 const BASE =
   PESAPAL_ENV === 'production'
-    ? 'https://pay.pesapal.com'
-    : 'https://cybqa.pesapal.com' // sandbox
+    ? 'https://pay.pesapal.com/v3'
+    : 'https://cybqa.pesapal.com/v3'
 
-//------------------------------------------------------
-// 1) GET ACCESS TOKEN
-//------------------------------------------------------
+// Request an auth token
 export async function getAuthToken() {
   const url = `${BASE}/api/Auth/RequestToken`
-
   const auth = Buffer.from(
     `${PESAPAL_CONSUMER_KEY}:${PESAPAL_CONSUMER_SECRET}`,
   ).toString('base64')
 
-  const resp = await axios.post(
-    url,
-    {},
-    {
+  try {
+    const res = await axios.post(url, null, {
       headers: {
         Authorization: `Basic ${auth}`,
         'Content-Type': 'application/json',
       },
-    },
-  )
+    })
 
-  return resp.data?.token || resp.data?.access_token || resp.data
+    return res.data?.token || res.data?.access_token || res.data
+  } catch (err) {
+    console.error('getAuthToken ERROR:', err.response?.data || err.message)
+    throw err
+  }
+}
+export async function getTransactionStatus(orderTrackingId) {
+  const token = await getAuthToken()
+  const url = `${BASE}/api/Transactions/GetTransactionStatus?orderTrackingId=${encodeURIComponent(orderTrackingId)}`
+
+  try {
+    const res = await axios.get(url, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        Accept: 'application/json',
+      },
+    })
+
+    return res.data
+  } catch (err) {
+    console.error(
+      'getTransactionStatus ERROR:',
+      err.response?.data || err.message,
+    )
+    throw err
+  }
 }
 
-//------------------------------------------------------
-// 2) SUBMIT ORDER REQUEST
-//------------------------------------------------------
+// Submit order
 export async function submitOrder({
   amount,
   reference,
@@ -47,7 +64,6 @@ export async function submitOrder({
   currency = 'KES',
 }) {
   const token = await getAuthToken()
-
   const url = `${BASE}/api/Transactions/SubmitOrderRequest`
 
   const payload = {
@@ -59,27 +75,17 @@ export async function submitOrder({
     customer,
   }
 
-  const resp = await axios.post(url, payload, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-      'Content-Type': 'application/json',
-    },
-  })
+  try {
+    const res = await axios.post(url, payload, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+    })
 
-  return resp.data
-}
-
-//------------------------------------------------------
-// 3) GET TRANSACTION STATUS
-//------------------------------------------------------
-export async function getTransactionStatus(orderTrackingId) {
-  const token = await getAuthToken()
-
-  const url = `${BASE}/api/Transactions/GetTransactionStatus?orderTrackingId=${encodeURIComponent(orderTrackingId)}`
-
-  const resp = await axios.get(url, {
-    headers: { Authorization: `Bearer ${token}` },
-  })
-
-  return resp.data
+    return res.data
+  } catch (err) {
+    console.error('submitOrder ERROR:', err.response?.data || err.message)
+    throw err
+  }
 }

@@ -17,6 +17,10 @@ export const createNewEvent = async (req, res) => {
       capacity,
       price,
       is_paid,
+      mpesa_type,
+      mpesa_number,
+      mpesa_account,
+      payment_instructions,
     } = req.body
 
     if (!title || !date || !time || !location || !capacity)
@@ -32,6 +36,10 @@ export const createNewEvent = async (req, res) => {
       capacity,
       price: price || 0,
       is_paid: is_paid ? 1 : 0,
+      mpesa_type,
+      mpesa_number,
+      mpesa_account,
+      payment_instructions,
     })
 
     return res.json({ success: true, event_id: eventId })

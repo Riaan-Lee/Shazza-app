@@ -1,7 +1,9 @@
 import { useState } from 'react'
+import { useAuth } from '../context/AuthContext'
 
 export default function Auth() {
   const [mode, setMode] = useState('login')
+  const { login, register } = useAuth()
 
   return (
     <div className="min-h-screen flex items-center justify-center p-6 text-white">
@@ -10,10 +12,30 @@ export default function Auth() {
           {mode === 'login' ? 'Welcome Back' : 'Create Account'}
         </h1>
 
-        {/* FORM */}
-        <form className="space-y-4">
+        <form
+          className="space-y-4"
+          onSubmit={async (e) => {
+            e.preventDefault()
+
+            const email = e.target.email.value
+            const password = e.target.password.value
+            const name = e.target.name?.value
+
+            try {
+              if (mode === 'login') {
+                await login({ email, password })
+              } else {
+                await register({ name, email, password })
+              }
+              window.location.href = '/'
+            } catch (err) {
+              alert('Authentication failed')
+            }
+          }}
+        >
           {mode === 'signup' && (
             <input
+              name="name"
               type="text"
               placeholder="Full Name"
               className="w-full p-3 rounded-xl bg-white/10 border border-white/10 text-white"
@@ -21,12 +43,14 @@ export default function Auth() {
           )}
 
           <input
+            name="email"
             type="email"
             placeholder="Email"
             className="w-full p-3 rounded-xl bg-white/10 border border-white/10 text-white"
           />
 
           <input
+            name="password"
             type="password"
             placeholder="Password"
             className="w-full p-3 rounded-xl bg-white/10 border border-white/10 text-white"

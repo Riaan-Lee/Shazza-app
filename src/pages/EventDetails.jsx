@@ -12,26 +12,14 @@ export default function EventDetails() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    // Replace with real backend call later
     axiosClient
       .get(`/events/${id}`)
       .then((res) => {
-        setEvent(res.data)
+        setEvent(res.data.event || res.data)
       })
-      .catch(() => {
-        console.warn('No API backend yet. Using mock.')
-        setEvent({
-          id,
-          title: 'David’s 23rd Birthday Bash',
-          description:
-            'Come celebrate with food, music, games and good vibes. Limited slots only!',
-          date: '2025-02-01 19:00',
-          location: 'The Social House, Nairobi',
-          price: 1500, // 0 means free
-          capacity: 50,
-          banner:
-            'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e',
-        })
+      .catch((err) => {
+        console.error('Failed to load event', err)
+        setEvent(null)
       })
       .finally(() => setLoading(false))
   }, [id])
@@ -43,7 +31,7 @@ export default function EventDetails() {
 
   const handleBooking = () => {
     if (isPaid) {
-      navigate(`/payment/${event.id}`)
+      navigate(`/event/${event.id}/mpesa`)
     } else {
       navigate(`/book/${event.id}`)
     }
@@ -120,6 +108,14 @@ export default function EventDetails() {
         >
           {isPaid ? 'Reserve & Pay' : 'Reserve Spot'}
         </motion.button>
+        {event.mpesa_number && (
+          <button
+            onClick={() => navigate(`/event/${event.id}/mpesa`)}
+            className="w-full mt-3 py-3 rounded-2xl font-semibold text-md bg-white/10 text-purple-300 border border-purple-500"
+          >
+            Pay via M-Pesa
+          </button>
+        )}
       </motion.div>
     </div>
   )

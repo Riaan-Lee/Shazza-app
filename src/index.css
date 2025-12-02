@@ -6,3 +6,76 @@
 body {
   -webkit-font-smoothing: antialiased;
 }
+
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+  background: #0a0a0a;
+  color: white;
+}
+
+* {
+  color: inherit;
+}
+
+.page-container {
+  width: 92%;
+  margin: auto;
+  margin-top: 80px;
+  padding-bottom: 3rem;
+}
+
+/* Global text style */
+.page-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 1rem;
+}
+
+/* Glass card style */
+.glass-card {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border: 1px solid rgba(160, 32, 240, 0.15);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+}
+
+/* Input fields */
+.input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  color: white;
+  outline: none;
+}
+
+.input::placeholder {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+/* Buttons */
+.submit-btn {
+  width: 100%;
+  padding: 0.9rem;
+  border-radius: 14px;
+  background: linear-gradient(to right, #a020f0, #8b1ee0, #a020f0);
+  font-weight: 600;
+  color: white;
+  text-align: center;
+  transition: 0.2s ease;
+}
+
+.submit-btn:hover:not(:disabled) {
+  background: linear-gradient(to right, #8b1ee0, #a020f0, #8b1ee0);
+}
+
+.submit-btn:disabled {
+  opacity: 0.5;
+}

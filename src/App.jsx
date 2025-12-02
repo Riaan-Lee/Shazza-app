@@ -5,18 +5,13 @@ import BottomNav from './components/Bottomnav.jsx' // <-- new
 
 export default function App() {
   return (
-    <>
+    <div className="min-h-screen w-full bg-[#0a0a0a] text-white">
       <Navbar />
-      <main className="min-h-[calc(100vh-160px)] pb-28">
-        {' '}
-        {/* pb-28 reserves space for bottom nav */}
+      <main className="min-h-[calc(100vh-160px)] pb-28 page-container">
         <Outlet />
       </main>
-
       <Footer />
-
-      {/* Mobile floating navigation */}
       <BottomNav />
-    </>
+    </div>
   )
 }

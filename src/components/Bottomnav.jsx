@@ -1,12 +1,11 @@
 import { NavLink } from 'react-router-dom'
-import { MdHome, MdSearch, MdAddBox, MdEvent, MdPerson } from 'react-icons/md'
+import { MdHome, MdAddBox, MdEvent, MdPerson } from 'react-icons/md'
 
 export default function BottomNav() {
   const items = [
     { to: '/', label: 'Home', Icon: MdHome },
-    { to: '/search', label: 'Explore', Icon: MdSearch },
-    { to: '/create', label: 'Create', Icon: MdAddBox },
-    { to: '/tickets', label: 'Tickets', Icon: MdEvent },
+    { to: '/events', label: 'Events', Icon: MdEvent },
+    { to: '/create-event', label: 'Create', Icon: MdAddBox },
     { to: '/profile', label: 'Profile', Icon: MdPerson },
   ]
 
