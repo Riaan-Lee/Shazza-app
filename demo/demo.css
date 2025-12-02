@@ -365,3 +365,17 @@ body {
 .bottom-nav a {
   white-space: nowrap;
 }
+/* Hide top-nav links on mobile, keep only 'Shazza' logo */
+@media (max-width: 768px) {
+  .top-nav-links {
+    display: none !important;
+  }
+
+  .top-nav-container {
+    justify-content: center !important;
+  }
+
+  .nav-logo {
+    margin: 0 auto !important;
+  }
+}
