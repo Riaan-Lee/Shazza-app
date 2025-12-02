@@ -1,0 +1,19 @@
+EDIT LOG - demo/ static pages
+
+Files replaced with static HTML replicas and shared CSS:
+- index.html (home)  -> updated: added top nav, bottom nav, hero and event cards
+- login.html (auth)  -> updated: full auth replica with toggle JS
+- events.html        -> updated: events list and client-side filter
+- event-details.html -> updated: event detail replica with banner, glass card and actions
+- tickets.html       -> updated: ticket purchase replica
+- dashboard.html     -> updated: user dashboard replica
+- demo.css           -> replaced: replicated styles including navbar and bottom nav
+
+NOT DONE (will require new pages or further assets):
+- create-event.html  (JSX -> HTML not created: please confirm if you want this added)
+- booking-success.html (JSX -> HTML not created)
+- payment-info.html (JSX -> HTML not created)
+- paid-payment.html (JSX -> HTML not created)
+- profile.html (JSX -> HTML not created)
+
+Reason: you asked to let me know before creating new pages. I updated only files that already exist in /demo. If you want the remaining JSX pages turned into static HTML files now, tell me and I will create them next.
