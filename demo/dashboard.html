@@ -2,24 +2,96 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>User Dashboard</title>
+    <title>Shazza — Dashboard</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
     <link rel="stylesheet" href="demo.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <h1 class="title">Your Dashboard</h1>
-
-    <div class="list">
-      <div class="list-item">
-        <h3>Your Ticket — Summer Bash 2025</h3>
-        <p>Status: Paid</p>
-        <p>Type: VIP</p>
+    <nav class="top-nav-glass">
+      <div class="top-nav-container">
+        <div class="nav-logo">Shazza</div>
+        <ul class="top-nav-links">
+          <li>
+            <a class="top-nav-button" href="index.html">
+              <span class="material-symbols-outlined">home</span>
+              Home
+            </a>
+          </li>
+          <li>
+            <a class="top-nav-button" href="events.html">
+              <span class="material-symbols-outlined">event</span>
+              Events
+            </a>
+          </li>
+          <li>
+            <a class="top-nav-button" href="events.html">
+              <span class="material-symbols-outlined">explore</span>
+              Discover
+            </a>
+          </li>
+          <li>
+            <a class="top-nav-button" href="event-details.html">
+              <span class="material-symbols-outlined">add_box</span>
+              Create
+            </a>
+          </li>
+          <li>
+            <a class="top-nav-button top-nav-active" href="dashboard.html">
+              <span class="material-symbols-outlined">person</span>
+              Dashboard
+            </a>
+          </li>
+        </ul>
       </div>
+    </nav>
 
-      <div class="list-item">
-        <h3>Your Ticket — Tech Expo Showcase</h3>
-        <p>Status: Pending</p>
-        <p>Type: Regular</p>
+    <main class="container">
+      <h1 class="page-title">Your Dashboard</h1>
+
+      <div class="list">
+        <div class="list-item">
+          <h3>Your Ticket — Summer Bash 2025</h3>
+          <p>Status: Paid</p>
+          <p>Type: VIP</p>
+        </div>
+
+        <div class="list-item">
+          <h3>Your Ticket — Tech Expo Showcase</h3>
+          <p>Status: Pending</p>
+          <p>Type: Regular</p>
+        </div>
       </div>
-    </div>
+    </main>
+
+    <footer class="site-footer"><p>© 2025 Shazza</p></footer>
+
+    <nav class="bottom-nav" role="navigation" aria-label="Bottom Navigation">
+      <ul>
+        <li>
+          <a href="index.html"
+            ><span class="material-symbols-outlined">home</span>Home</a
+          >
+        </li>
+        <li>
+          <a href="events.html"
+            ><span class="material-symbols-outlined">event</span>Events</a
+          >
+        </li>
+        <li>
+          <a href="event-details.html"
+            ><span class="material-symbols-outlined">add_box</span>Create</a
+          >
+        </li>
+        <li>
+          <a href="dashboard.html"
+            ><span class="material-symbols-outlined">person</span>Profile</a
+          >
+        </li>
+      </ul>
+    </nav>
   </body>
 </html>
